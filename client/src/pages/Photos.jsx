@@ -21,7 +21,8 @@ export default function Photos() {
 
         async function loadPhotos() {
             try {
-                const response = await fetch("/api/photos");
+                const baseUrl = import.meta.env.VITE_API_BASE || "";
+                const response = await fetch(`${baseUrl}/api/photos`);
                 const data = await response.json();
 
                 if (!response.ok) {
