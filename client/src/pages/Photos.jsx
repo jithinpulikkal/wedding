@@ -149,9 +149,9 @@ export default function Photos() {
                                                     className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                                                 />
                                             </div>
-                                            <div className="px-4 py-3 text-xs uppercase tracking-[0.3em] text-teak/80">
+                                            {/* <div className="px-4 py-3 text-xs uppercase tracking-[0.3em] text-teak/80">
                                                 {item.name}
-                                            </div>
+                                            </div> */}
                                         </a>
                                     ))}
                                 </div>
