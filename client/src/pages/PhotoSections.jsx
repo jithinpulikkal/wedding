@@ -6,16 +6,27 @@ import { findGroup } from "../utils/photos.js";
 
 const fallbackSections = ["Wedding", "Reception", "Highlights"];
 
+function toTitleCase(value) {
+    if (!value) {
+        return "";
+    }
+    return value
+        .split(/\s+/)
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+}
+
 export default function PhotoSections() {
     const { side } = useParams();
     const photoState = usePhotoData();
     const group = findGroup(photoState.groups, side);
+    const displaySide = toTitleCase(side);
 
     return (
         <div className="mx-auto max-w-6xl px-5 pb-20 sm:pb-28">
             <SectionHeader
                 eyebrow="Photos"
-                title={side ? `${side} Side Sections` : "Photo Sections"}
+                title={side ? `${displaySide} Side Sections` : "Photo Sections"}
                 description={weddingData.photos.notice}
             />
 
@@ -42,7 +53,7 @@ export default function PhotoSections() {
 
             {photoState.status !== "loading" && !group && (
                 <div className="rounded-2xl border border-gold/20 bg-white/70 p-8 text-sm uppercase tracking-[0.35em] text-maroon shadow-royal">
-                    No matching photo group found for “{side}”.
+                    No matching photo group found for “{displaySide || side}”.
                 </div>
             )}
 
@@ -61,7 +72,7 @@ export default function PhotoSections() {
                                         {sectionName}
                                     </p>
                                     <p className="mt-4 text-sm text-teak/80">
-                                        View {sectionName.toLowerCase()} moments from the {side} side.
+                                        View {sectionName.toLowerCase()} moments from the {displaySide} side.
                                     </p>
                                 </Link>
                             );

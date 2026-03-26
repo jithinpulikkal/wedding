@@ -4,21 +4,43 @@ import weddingData from "../data/weddingData.js";
 import usePhotoData from "../hooks/usePhotoData.js";
 import { findCategory, findGroup } from "../utils/photos.js";
 
+function buildImageCandidates(id, fallbackUrl) {
+    if (id) {
+        return [
+            `https://drive.google.com/thumbnail?id=${id}&sz=w1000`,
+            `https://drive.google.com/uc?export=view&id=${id}`,
+            `https://lh3.googleusercontent.com/d/${id}`,
+        ];
+    }
+    return fallbackUrl ? [fallbackUrl] : [];
+}
+
+function toTitleCase(value) {
+    if (!value) {
+        return "";
+    }
+    return value
+        .split(/\s+/)
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+}
+
 export default function PhotoGallery() {
     const { side, section } = useParams();
     const photoState = usePhotoData();
     const group = findGroup(photoState.groups, side);
     const category = findCategory(group, section);
+    const displaySection = toTitleCase(section);
 
     return (
         <div className="mx-auto max-w-6xl px-5 pb-20 sm:pb-28">
             <SectionHeader
                 eyebrow="Photos"
-                title={section ? `${section} Collection` : "Photo Collection"}
+                title={section ? `${displaySection} Collection` : "Photo Collection"}
                 description={weddingData.photos.notice}
             />
 
-            <div className="mb-10 flex flex-wrap gap-6">
+            <div className="mb-10 flex flex-wrap gap-6 justify-between">
                 <Link to={`/photos/${side}`} className="text-xs uppercase tracking-[0.35em] text-gold hover:text-maroon">
                     Back to Sections
                 </Link>
@@ -54,6 +76,7 @@ export default function PhotoGallery() {
                                 const viewLink = `/photos/view?id=${encodeURIComponent(
                                     item.id,
                                 )}&name=${encodeURIComponent(item.name)}`;
+                                const candidates = buildImageCandidates(item.id, item.thumbUrl || item.viewUrl);
 
                                 return (
                                     <Link
@@ -63,9 +86,19 @@ export default function PhotoGallery() {
                                     >
                                         <div className="aspect-[4/3] w-full overflow-hidden bg-ivory">
                                             <img
-                                                src={item.thumbUrl || item.viewUrl}
+                                                src={candidates[0]}
                                                 alt={item.name}
                                                 loading="lazy"
+                                                onError={(event) => {
+                                                    const currentIndex = Number(
+                                                        event.currentTarget.dataset.fallbackIndex || "0",
+                                                    );
+                                                    const nextIndex = currentIndex + 1;
+                                                    if (candidates[nextIndex]) {
+                                                        event.currentTarget.dataset.fallbackIndex = String(nextIndex);
+                                                        event.currentTarget.src = candidates[nextIndex];
+                                                    }
+                                                }}
                                                 className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                                             />
                                         </div>
