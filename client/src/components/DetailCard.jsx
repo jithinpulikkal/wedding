@@ -89,6 +89,7 @@ export function buildDetailCards(data) {
             title: ceremony.title,
             subtitle: ceremony.subtitle,
             lines: normalizeLines([...(ceremony.details || []), ceremony.dressCode]),
+            variant: "parchment",
         },
     ].filter((card) => card.title || (card.lines && card.lines.length));
 }
@@ -152,7 +153,7 @@ export function buildVenueCards(data) {
         subtitle: item.title,
         lines: normalizeLines([...(item.addressLines || [])]),
         mapLink: item.mapLink,
-        variant: "white",
+        variant: "parchment",
     }));
 }
 

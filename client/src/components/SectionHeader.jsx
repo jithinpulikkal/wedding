@@ -1,6 +1,6 @@
 ﻿export default function SectionHeader({ eyebrow, title, description }) {
     return (
-        <div className="mb-10 text-center sm:mb-14">
+        <div className="mb-10 text-center">
             {/* Eyebrow */}
             {eyebrow && <p className="text-sm uppercase tracking-[0.4em] text-gold">{eyebrow}</p>}
 
