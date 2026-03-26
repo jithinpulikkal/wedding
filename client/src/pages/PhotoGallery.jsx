@@ -9,7 +9,7 @@ function buildImageCandidates(id, fallbackUrl) {
         return [
             `https://drive.google.com/thumbnail?id=${id}&sz=w1000`,
             `https://drive.google.com/uc?export=view&id=${id}`,
-            `https://lh3.googleusercontent.com/d/${id}`,
+            `https://lh3.googleusercontent.com/d/${id}`
         ];
     }
     return fallbackUrl ? [fallbackUrl] : [];
@@ -41,10 +41,16 @@ export default function PhotoGallery() {
             />
 
             <div className="mb-10 flex flex-wrap gap-6 justify-between">
-                <Link to={`/photos/${side}`} className="text-xs uppercase tracking-[0.35em] text-gold hover:text-maroon">
+                <Link
+                    to={`/photos/${side}`}
+                    className="text-xs uppercase tracking-[0.35em] text-gold hover:text-maroon"
+                >
                     Back to Sections
                 </Link>
-                <Link to="/photos" className="text-xs uppercase tracking-[0.35em] text-gold hover:text-maroon">
+                <Link
+                    to="/photos"
+                    className="text-xs uppercase tracking-[0.35em] text-gold hover:text-maroon"
+                >
                     Back to Photos Overview
                 </Link>
             </div>
@@ -69,13 +75,17 @@ export default function PhotoGallery() {
 
             {photoState.status !== "loading" && category && (
                 <div className="space-y-12">
-                    <p className="text-xs uppercase tracking-[0.35em] text-gold">{category.name}</p>
+                    <p className="text-xs uppercase tracking-[0.35em] text-gold">
+                        {category.name}
+                    </p>
                     {category.items.length ? (
                         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                             {category.items.map((item) => {
                                 const viewLink = `/photos/view?id=${encodeURIComponent(
-                                    item.id,
-                                )}&name=${encodeURIComponent(item.name)}`;
+                                    item.id
+                                )}&name=${encodeURIComponent(item.name)}&side=${encodeURIComponent(
+                                    side
+                                )}&section=${encodeURIComponent(section)}`;
                                 const candidates = buildImageCandidates(item.id, item.thumbUrl || item.viewUrl);
 
                                 return (
@@ -91,7 +101,7 @@ export default function PhotoGallery() {
                                                 loading="lazy"
                                                 onError={(event) => {
                                                     const currentIndex = Number(
-                                                        event.currentTarget.dataset.fallbackIndex || "0",
+                                                        event.currentTarget.dataset.fallbackIndex || "0"
                                                     );
                                                     const nextIndex = currentIndex + 1;
                                                     if (candidates[nextIndex]) {
@@ -110,10 +120,21 @@ export default function PhotoGallery() {
                             })}
                         </div>
                     ) : (
-                        <p className="mt-3 text-sm text-teak/70">Photos for this section will appear soon.</p>
+                        <p className="mt-3 text-sm text-teak/70">
+                            Photos for this section will appear soon.
+                        </p>
                     )}
                 </div>
             )}
+
+            <div className="mt-12 rounded-2xl border border-gold/20 bg-white/70 p-8 shadow-royal sm:p-10">
+                <p className="text-sm uppercase tracking-[0.35em] text-gold">
+                    Phase 2 Preview
+                </p>
+                <p className="mt-4 leading-relaxed text-teak/80">
+                    {weddingData.photos.phaseTwo}
+                </p>
+            </div>
         </div>
     );
 }
