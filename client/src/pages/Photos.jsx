@@ -9,7 +9,7 @@ export default function Photos() {
     const photoState = usePhotoData();
 
     return (
-        <div className="mx-auto max-w-6xl px-5 pb-20 sm:pb-28">
+        <div className="mx-auto max-w-6xl px-5 pb-16">
             <SectionHeader eyebrow="Photos" title="Wedding Memories" description={weddingData.photos.notice} />
 
             {photoState.status === "loading" && (

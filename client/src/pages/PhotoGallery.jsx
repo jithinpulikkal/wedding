@@ -33,7 +33,7 @@ export default function PhotoGallery() {
     const displaySection = toTitleCase(section);
 
     return (
-        <div className="mx-auto max-w-6xl px-5 pb-20 sm:pb-28">
+        <div className="mx-auto max-w-6xl px-5 pb-16">
             <SectionHeader
                 eyebrow="Photos"
                 title={section ? `${displaySection} Collection` : "Photo Collection"}
@@ -127,14 +127,7 @@ export default function PhotoGallery() {
                 </div>
             )}
 
-            <div className="mt-12 rounded-2xl border border-gold/20 bg-white/70 p-8 shadow-royal sm:p-10">
-                <p className="text-sm uppercase tracking-[0.35em] text-gold">
-                    Phase 2 Preview
-                </p>
-                <p className="mt-4 leading-relaxed text-teak/80">
-                    {weddingData.photos.phaseTwo}
-                </p>
-            </div>
+           
         </div>
     );
 }

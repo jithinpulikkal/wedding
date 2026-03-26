@@ -61,7 +61,7 @@ export default function WeddingAlbumHome() {
     const heroCandidates = buildImageCandidates(heroItem?.id, heroItem?.thumbUrl || heroItem?.viewUrl);
 
     return (
-        <div className="mx-auto max-w-6xl px-5 pb-20 sm:pb-28">
+        <div className="mx-auto max-w-6xl px-5 pb-16">
             <SectionHeader
                 eyebrow="Wedding Album"
                 title="Raveena & Jithin"

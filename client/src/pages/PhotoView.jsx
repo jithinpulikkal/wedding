@@ -43,7 +43,7 @@ export default function PhotoView() {
     }
 
     return (
-        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 pb-20 sm:pb-28">
+        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 pb-16">
             <div className="flex flex-wrap gap-6 justify-between">
                 {backToSection && (
                     <Link

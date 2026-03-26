@@ -23,7 +23,7 @@ export default function PhotoSections() {
     const displaySide = toTitleCase(side);
 
     return (
-        <div className="mx-auto max-w-6xl px-5 pb-20 sm:pb-28">
+        <div className="mx-auto max-w-6xl px-5 pb-16">
             <SectionHeader
                 eyebrow="Photos"
                 title={side ? `${displaySide} Side Sections` : "Photo Sections"}
@@ -53,7 +53,7 @@ export default function PhotoSections() {
 
             {photoState.status !== "loading" && !group && (
                 <div className="rounded-2xl border border-gold/20 bg-white/70 p-8 text-sm uppercase tracking-[0.35em] text-maroon shadow-royal">
-                    No matching photo group found for “{displaySide || side}”.
+                    No matching photo group found for ï¿½{displaySide || side}ï¿½.
                 </div>
             )}
 
