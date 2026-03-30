@@ -1,6 +1,14 @@
 ﻿import Reveal from "./Reveal.jsx";
 
-export default function IllustrationCard({ title, subtitle, imageSrc, imageAlt }) {
+export default function IllustrationCard({
+    title,
+    subtitle,
+    imageSrc,
+    imageAlt,
+    onImageLoad,
+    onImageError,
+    imageLoading,
+}) {
     return (
         <Reveal animation="scaleIn">
             <div className="relative overflow-hidden rounded-3xl border border-gold/30 bg-gradient-to-br from-ivory via-white to-ivory shadow-royal">
@@ -12,7 +20,9 @@ export default function IllustrationCard({ title, subtitle, imageSrc, imageAlt }
                                 src={imageSrc}
                                 alt={imageAlt || title}
                                 className="w-full max-h-full rounded-2xl border border-gold/30 object-cover shadow-glow motion-safe:animate-slowZoom"
-                                loading="lazy"
+                                loading={imageLoading || "lazy"}
+                                onLoad={onImageLoad}
+                                onError={onImageError}
                             />
                         </div>
                     ) : (

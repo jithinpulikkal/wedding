@@ -1,4 +1,5 @@
-﻿import SectionHeader from "../components/SectionHeader.jsx";
+﻿import { useState } from "react";
+import SectionHeader from "../components/SectionHeader.jsx";
 import IllustrationCard from "../components/IllustrationCard.jsx";
 import FloralDivider from "../components/FloralDivider.jsx";
 import DetailCard, {
@@ -19,6 +20,9 @@ export default function Home() {
     const scheduleCard = buildScheduleCard(weddingData);
     const venueCards = buildVenueCards(weddingData);
 
+    const [heroReady, setHeroReady] = useState(false);
+    const handleHeroReady = () => setHeroReady(true);
+
     return (
         <div id="top" className="space-y-16 pb-20 sm:space-y-16 sm:pb-24">
             <section className="mx-auto grid max-w-6xl items-center gap-8 px-5 sm:gap-12 sm:pt-10 md:grid-cols-2">
@@ -32,20 +36,30 @@ export default function Home() {
                             subtitle="Traditional Kerala wedding portrait"
                             imageSrc={brideGroomImage}
                             imageAlt="Bride and groom illustration"
+                            imageLoading="eager"
+                            onImageLoad={handleHeroReady}
+                            onImageError={handleHeroReady}
                         />
                     </div>
                     <p className="text-base text-teak/80 sm:text-xl">{invitation.message}</p>
+                    <Reveal animation="scaleIn">
+                        {heroReady ? (
+                            <Reveal animation="fadeInSlow">
+                                <h1 className="font-serif text-maroon font-bold text-4xl sm:text-5xl md:text-6xl leading-tight text-center">
+                                    <span className="block whitespace-nowrap">{couple.bride.name}</span>
 
-                    <Reveal animation="fadeInSlow">
-                        <h1 className="font-serif text-maroon font-bold text-4xl sm:text-5xl md:text-6xl leading-tight text-center">
-                            <span className="block whitespace-nowrap">{couple.bride.name}</span>
+                                    <span className="block text-2xl sm:text-3xl md:text-4xl my-2 text-gold font-medium">
+                                        &
+                                    </span>
 
-                            <span className="block text-2xl sm:text-3xl md:text-4xl my-2 text-gold font-medium">&</span>
-
-                            <span className="block">{couple.groom.name}</span>
-                        </h1>
+                                    <span className="block">{couple.groom.name}</span>
+                                </h1>
+                            </Reveal>
+                        ) : (
+                            <div className="h-[7.5rem] sm:h-[8.5rem] md:h-[9.5rem]" />
+                        )}
                     </Reveal>
-                    
+
                     <p className="text-base text-teak/70 sm:text-xl pt-4">{brand.tagline}</p>
                     <Reveal animation="scaleIn">
                         <div className="rounded-2xl border border-gold/20 bg-parchment/70 p-5 shadow-royal sm:p-6">
@@ -63,6 +77,9 @@ export default function Home() {
                         subtitle="Traditional Kerala wedding portrait"
                         imageSrc={brideGroomImage}
                         imageAlt="Bride and groom illustration"
+                        imageLoading="eager"
+                        onImageLoad={handleHeroReady}
+                        onImageError={handleHeroReady}
                     />
                 </div>
             </section>
