@@ -102,7 +102,7 @@ export default function WeddingAlbumHome() {
                         <div className="rounded-2xl border border-gold/20 bg-white/70 p-8 shadow-royal">
                             <p className="text-xs uppercase tracking-[0.35em] text-gold">Browse by Side</p>
                             <div className="mt-6 grid gap-6 sm:grid-cols-2">
-                                <Reveal animation="scaleIn">
+                                <Reveal animation="scaleIn" asChild>
                                     <Link
                                         to="/photos/bride"
                                         className="group rounded-2xl border border-gold/20 bg-white/70 p-6 shadow-royal transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"
@@ -111,7 +111,7 @@ export default function WeddingAlbumHome() {
                                         <p className="mt-3 text-sm text-teak/80">View albums from Raveena's family.</p>
                                     </Link>
                                 </Reveal>
-                                <Reveal animation="scaleIn">
+                                <Reveal animation="scaleIn" asChild>
                                     <Link
                                         to="/photos/groom"
                                         className="group rounded-2xl border border-gold/20 bg-white/70 p-6 shadow-royal transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"

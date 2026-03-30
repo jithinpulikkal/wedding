@@ -90,7 +90,7 @@ export default function PhotoGallery() {
                                 const candidates = buildImageCandidates(item.id, item.thumbUrl || item.viewUrl);
 
                                 return (
-                                    <Reveal key={item.id} animation="scaleIn">
+                                    <Reveal key={item.id} animation="scaleIn" asChild>
                                         <Link
                                             to={viewLink}
                                             className="group overflow-hidden rounded-2xl border border-gold/20 bg-white/70 shadow-royal transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"

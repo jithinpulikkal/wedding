@@ -55,6 +55,7 @@ module.exports = {
       animation: {
         fadeUp: "fadeUp 700ms ease-out both",
         fadeIn: "fadeIn 700ms ease-out both",
+        fadeInSlow: "fadeIn 2400ms ease-out both",
         scaleIn: "scaleIn 700ms ease-out both",
         floatSoft: "floatSoft 6s ease-in-out infinite",
         slowZoom: "slowZoom 12s ease-in-out infinite alternate",

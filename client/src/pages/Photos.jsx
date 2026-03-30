@@ -28,7 +28,7 @@ export default function Photos() {
             {photoState.status === "ready" && (
                 <div className="grid gap-6 sm:grid-cols-2">
                     {["bride", "groom"].map((label) => (
-                        <Reveal key={label} animation="scaleIn">
+                        <Reveal key={label} animation="scaleIn" asChild>
                             <Link
                                 to={`/photos/${label}`}
                                 className="group rounded-2xl border border-gold/20 bg-white/70 p-8 shadow-royal transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"
@@ -52,7 +52,7 @@ export default function Photos() {
                 <>
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                         {placeholderPhotos.map((item) => (
-                            <Reveal key={item} animation="scaleIn">
+                            <Reveal key={item} animation="scaleIn" asChild>
                                 <div
                                     className="flex h-40 items-center justify-center rounded-2xl border border-gold/20 bg-white/70 text-sm uppercase tracking-widest text-gold shadow-royal transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-gold/40"
                                 >

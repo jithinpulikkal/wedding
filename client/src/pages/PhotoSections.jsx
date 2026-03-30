@@ -64,7 +64,7 @@ export default function PhotoSections() {
                         (section) => {
                             const sectionName = typeof section === "string" ? section : section.name;
                             return (
-                                <Reveal key={sectionName} animation="scaleIn">
+                                <Reveal key={sectionName} animation="scaleIn" asChild>
                                     <Link
                                         to={`/photos/${side}/${encodeURIComponent(sectionName.toLowerCase())}`}
                                         className="group rounded-2xl border border-gold/20 bg-white/70 p-8 shadow-royal transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"
