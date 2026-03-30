@@ -76,14 +76,14 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="mx-auto max-w-6xl px-5">
+            {/* <section className="mx-auto max-w-6xl px-5">
                 <SectionHeader
                     eyebrow="Schedule"
                     title="Wedding Day Timeline"
                     description="A gentle flow of ceremonies, rituals, and celebration across the day."
                 />
                 <DetailCard {...scheduleCard} />
-            </section>
+            </section> */}
 
             <section className="mx-auto grid max-w-6xl items-center gap-8 px-5 sm:gap-12">
                 <div className="space-y-6">

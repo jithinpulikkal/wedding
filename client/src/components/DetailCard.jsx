@@ -86,8 +86,8 @@ export function buildDetailCards(data) {
         },
         {
             key: "ceremony",
-            title: ceremony.title,
-            subtitle: ceremony.subtitle,
+            // title: ceremony.subtitle,
+            subtitle: ceremony.intro,
             lines: normalizeLines([...(ceremony.details || []), ceremony.dressCode]),
             variant: "parchment",
         },
