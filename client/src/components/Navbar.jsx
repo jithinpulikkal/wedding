@@ -35,7 +35,7 @@ export default function Navbar({ activePath }) {
                 {/* Mobile Photos Button */}
                 <Link
                     to="/photos"
-                    className="rounded-full border border-gold/60 px-4 py-1.5 text-xs uppercase tracking-[0.35em] text-maroon transition hover:bg-gold/10 md:hidden"
+                    className="md:hidden inline-flex items-center rounded-full px-5 py-1 text-sm uppercase tracking-[0.3em] text-maroon transition-all duration-300 hover:bg-gold/10 shadow-md hover:scale-105 hover:shadow-lg"
                 >
                     {nav.photosLabel}
                 </Link>

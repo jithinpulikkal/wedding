@@ -53,14 +53,26 @@ export function DetailCard({ eyebrow, title, subtitle, lines, mapLink, variant =
             ) : null}
 
             {mapLink ? (
-                <a
-                    href={mapLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-5 inline-flex items-center justify-center rounded-full border border-gold/60 px-5 py-2 text-sm uppercase tracking-[0.3em] text-maroon transition hover:bg-gold/10"
-                >
-                    Open Map
-                </a>
+                <div className="mt-6 flex justify-end">
+                    <a
+                        href={mapLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-2 text-sm font-semibold uppercase tracking-[0.25em] text-maroon shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    >
+                        <span>Open Map</span>
+
+                        <svg
+                            className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            viewBox="0 0 24 24"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
             ) : null}
         </div>
     );

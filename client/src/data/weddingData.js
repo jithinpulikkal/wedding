@@ -35,7 +35,7 @@
     invitation: {
         title: "Wedding Invitation",
         message:
-            "With the blessings of the Almighty and our beloved families, we cordially invite you to grace the wedding ceremony of Raveena and Jithin.",
+            "With the blessings of the Almighty and our beloved families, we cordially invite you to grace the wedding ceremony of",
         welcomeMessage: "Your presence will add joy and meaning to this auspicious occasion as we unite in marriage.",
         blessingsMessage: "We seek your blessings, love, and good wishes as we embark on this beautiful journey together.",
         closingLine: "We look forward to celebrating this special day with you.",
