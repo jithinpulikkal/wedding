@@ -10,6 +10,7 @@ import DetailCard, {
 import weddingData from "../data/weddingData.js";
 import brideGroomImage from "../assets/bridegroom.jpg";
 import templeImage from "../assets/temple.png";
+import Reveal from "../components/Reveal.jsx";
 
 export default function Home() {
     const { brand, couple, events, invitation, ceremony } = weddingData;
@@ -21,37 +22,41 @@ export default function Home() {
     return (
         <div id="top" className="space-y-16 pb-20 sm:space-y-16 sm:pb-24">
             <section className="mx-auto grid max-w-6xl items-center gap-8 px-5 sm:gap-12 sm:pt-10 md:grid-cols-2">
-                <div className="space-y-6 sm:space-y-4 animate-fadeUp">
-                    <p className="text-4xl font-bold uppercase tracking-[0.35em] text-gold">{invitation.title}</p>
-                    <p className="text-base uppercase tracking-[0.3em] text-teak/70 sm:text-base">{brand.subtitle}</p>
+                <Reveal animation="fadeUp">
+                    <div className="space-y-6 sm:space-y-4">
+                        <p className="text-4xl font-bold uppercase tracking-[0.35em] text-gold">{invitation.title}</p>
+                        <p className="text-base uppercase tracking-[0.3em] text-teak/70 sm:text-base">{brand.subtitle}</p>
 
-                    <div className="md:hidden">
-                        <IllustrationCard
-                            title="Bride & Groom"
-                            subtitle="Traditional Kerala wedding portrait"
-                            imageSrc={brideGroomImage}
-                            imageAlt="Bride and groom illustration"
-                        />
+                        <div className="md:hidden">
+                            <IllustrationCard
+                                title="Bride & Groom"
+                                subtitle="Traditional Kerala wedding portrait"
+                                imageSrc={brideGroomImage}
+                                imageAlt="Bride and groom illustration"
+                            />
+                        </div>
+                        <p className="text-base text-teak/80 sm:text-xl">{invitation.message}</p>
+
+                        <h1 className="font-serif text-maroon font-bold text-4xl sm:text-5xl md:text-6xl leading-tight text-center">
+                            <span className="block whitespace-nowrap">{couple.bride.name}</span>
+
+                            <span className="block text-2xl sm:text-3xl md:text-4xl my-2 text-gold font-medium">&</span>
+
+                            <span className="block">{couple.groom.name}</span>
+                        </h1>
+                        
+                        <p className="text-base text-teak/70 sm:text-xl pt-4">{brand.tagline}</p>
+                        <Reveal animation="scaleIn">
+                            <div className="rounded-2xl border border-gold/20 bg-parchment/70 p-5 shadow-royal sm:p-6">
+                                <p className="text-lg uppercase tracking-[0.3em] text-gold">{events.wedding.title}</p>
+                                <p className="mt-3 text-2xl font-serif text-maroon sm:text-3xl">{events.wedding.dateText}</p>
+                                <p className="mt-3 text-2xl font-serif text-maroon sm:text-3xl">{events.wedding.timeText}</p>
+                                <p className="mt-2 text-xl text-maroon font-semibold">{events.wedding.muhurthamText}</p>
+                                <p className="mt-2 text-x text-teak/80">{events.wedding.description}</p>
+                            </div>
+                        </Reveal>
                     </div>
-                    <p className="text-base text-teak/80 sm:text-xl">{invitation.message}</p>
-
-                    <h1 className="font-serif text-maroon font-bold text-4xl sm:text-5xl md:text-6xl leading-tight text-center">
-                        <span className="block whitespace-nowrap">{couple.bride.name}</span>
-
-                        <span className="block text-2xl sm:text-3xl md:text-4xl my-2 text-gold font-medium">&</span>
-
-                        <span className="block">{couple.groom.name}</span>
-                    </h1>
-                    
-                    <p className="text-base text-teak/70 sm:text-xl pt-4">{brand.tagline}</p>
-                    <div className="rounded-2xl border border-gold/20 bg-parchment/70 p-5 shadow-royal sm:p-6">
-                        <p className="text-lg uppercase tracking-[0.3em] text-gold">{events.wedding.title}</p>
-                        <p className="mt-3 text-2xl font-serif text-maroon sm:text-3xl">{events.wedding.dateText}</p>
-                        <p className="mt-3 text-2xl font-serif text-maroon sm:text-3xl">{events.wedding.timeText}</p>
-                        <p className="mt-2 text-xl text-maroon font-semibold">{events.wedding.muhurthamText}</p>
-                        <p className="mt-2 text-x text-teak/80">{events.wedding.description}</p>
-                    </div>
-                </div>
+                </Reveal>
                 <div className="hidden md:block">
                     <IllustrationCard
                         title="Bride & Groom"

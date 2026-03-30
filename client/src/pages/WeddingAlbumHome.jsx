@@ -1,14 +1,15 @@
-import IllustrationCard from "../components/IllustrationCard.jsx";
+﻿import IllustrationCard from "../components/IllustrationCard.jsx";
 import SectionHeader from "../components/SectionHeader.jsx";
 import usePhotoData from "../hooks/usePhotoData.js";
 import { findGroup } from "../utils/photos.js";
 import { Link } from "react-router-dom";
+import Reveal from "../components/Reveal.jsx";
 
 function SectionCard({ side, section }) {
     return (
         <Link
             to={`/photos/${side}/${encodeURIComponent(section.toLowerCase())}`}
-            className="group rounded-2xl border border-gold/20 bg-white/70 p-6 shadow-royal transition hover:border-gold/50 hover:shadow-xl"
+            className="group rounded-2xl border border-gold/20 bg-white/70 p-6 shadow-royal transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"
         >
             <p className="text-xs uppercase tracking-[0.35em] text-gold">{section}</p>
             <p className="mt-3 text-sm text-teak/80">
@@ -81,44 +82,54 @@ export default function WeddingAlbumHome() {
             )}
 
             {photoState.status !== "loading" && heroItem && heroCandidates.length > 0 && (
-                <div className="mb-12 overflow-hidden rounded-3xl border border-gold/20 bg-white/80 shadow-royal">
-                    <div className="relative flex  items-center justify-center overflow-hidden">
-                        <IllustrationCard
-                            title="Bride & Groom"
-                            subtitle="Traditional Kerala wedding portrait"
-                            imageSrc={heroCandidates[0]}
-                            imageAlt="Bride and groom illustration"
-                        />
+                <Reveal animation="fadeIn">
+                    <div className="mb-12 overflow-hidden rounded-3xl border border-gold/20 bg-white/80 shadow-royal">
+                        <div className="relative flex  items-center justify-center overflow-hidden">
+                            <IllustrationCard
+                                title="Bride & Groom"
+                                subtitle="Traditional Kerala wedding portrait"
+                                imageSrc={heroCandidates[0]}
+                                imageAlt="Bride and groom illustration"
+                            />
+                        </div>
                     </div>
-                </div>
+                </Reveal>
             )}
 
             {photoState.status !== "loading" && (
                 <div className="space-y-12">
-                    <div className="rounded-2xl border border-gold/20 bg-white/70 p-8 shadow-royal">
-                        <p className="text-xs uppercase tracking-[0.35em] text-gold">Browse by Side</p>
-                        <div className="mt-6 grid gap-6 sm:grid-cols-2">
-                            <Link
-                                to="/photos/bride"
-                                className="group rounded-2xl border border-gold/20 bg-white/70 p-6 shadow-royal transition hover:border-gold/50 hover:shadow-xl"
-                            >
-                                <p className="text-xs uppercase tracking-[0.35em] text-gold">Bride Side</p>
-                                <p className="mt-3 text-sm text-teak/80">View albums from Raveena's family.</p>
-                            </Link>
-                            <Link
-                                to="/photos/groom"
-                                className="group rounded-2xl border border-gold/20 bg-white/70 p-6 shadow-royal transition hover:border-gold/50 hover:shadow-xl"
-                            >
-                                <p className="text-xs uppercase tracking-[0.35em] text-gold">Groom Side</p>
-                                <p className="mt-3 text-sm text-teak/80">View albums from Jithin's family.</p>
-                            </Link>
+                    <Reveal animation="fadeIn">
+                        <div className="rounded-2xl border border-gold/20 bg-white/70 p-8 shadow-royal">
+                            <p className="text-xs uppercase tracking-[0.35em] text-gold">Browse by Side</p>
+                            <div className="mt-6 grid gap-6 sm:grid-cols-2">
+                                <Reveal animation="scaleIn">
+                                    <Link
+                                        to="/photos/bride"
+                                        className="group rounded-2xl border border-gold/20 bg-white/70 p-6 shadow-royal transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"
+                                    >
+                                        <p className="text-xs uppercase tracking-[0.35em] text-gold">Bride Side</p>
+                                        <p className="mt-3 text-sm text-teak/80">View albums from Raveena's family.</p>
+                                    </Link>
+                                </Reveal>
+                                <Reveal animation="scaleIn">
+                                    <Link
+                                        to="/photos/groom"
+                                        className="group rounded-2xl border border-gold/20 bg-white/70 p-6 shadow-royal transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"
+                                    >
+                                        <p className="text-xs uppercase tracking-[0.35em] text-gold">Groom Side</p>
+                                        <p className="mt-3 text-sm text-teak/80">View albums from Jithin's family.</p>
+                                    </Link>
+                                </Reveal>
+                            </div>
                         </div>
-                    </div>
+                    </Reveal>
 
                     {!brideSections.length && !groomSections.length && (
-                        <div className="rounded-2xl border border-gold/20 bg-white/70 p-8 text-sm uppercase tracking-[0.35em] text-gold shadow-royal">
-                            Albums will appear here once photos are uploaded.
-                        </div>
+                        <Reveal animation="fadeIn">
+                            <div className="rounded-2xl border border-gold/20 bg-white/70 p-8 text-sm uppercase tracking-[0.35em] text-gold shadow-royal">
+                                Albums will appear here once photos are uploaded.
+                            </div>
+                        </Reveal>
                     )}
                 </div>
             )}

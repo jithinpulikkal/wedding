@@ -1,8 +1,9 @@
-import { Link, useParams } from "react-router-dom";
+﻿import { Link, useParams } from "react-router-dom";
 import SectionHeader from "../components/SectionHeader.jsx";
 import weddingData from "../data/weddingData.js";
 import usePhotoData from "../hooks/usePhotoData.js";
 import { findGroup } from "../utils/photos.js";
+import Reveal from "../components/Reveal.jsx";
 
 const fallbackSections = ["Wedding", "Reception", "Highlights"];
 
@@ -53,7 +54,7 @@ export default function PhotoSections() {
 
             {photoState.status !== "loading" && !group && (
                 <div className="rounded-2xl border border-gold/20 bg-white/70 p-8 text-sm uppercase tracking-[0.35em] text-maroon shadow-royal">
-                    No matching photo group found for �{displaySide || side}�.
+                    No matching photo group found for ï¿½{displaySide || side}ï¿½.
                 </div>
             )}
 
@@ -63,18 +64,19 @@ export default function PhotoSections() {
                         (section) => {
                             const sectionName = typeof section === "string" ? section : section.name;
                             return (
-                                <Link
-                                    key={sectionName}
-                                    to={`/photos/${side}/${encodeURIComponent(sectionName.toLowerCase())}`}
-                                    className="group rounded-2xl border border-gold/20 bg-white/70 p-8 shadow-royal transition hover:border-gold/50 hover:shadow-xl"
-                                >
-                                    <p className="text-xs uppercase tracking-[0.35em] text-gold">
-                                        {sectionName}
-                                    </p>
-                                    <p className="mt-4 text-sm text-teak/80">
-                                        View {sectionName.toLowerCase()} moments from the {displaySide} side.
-                                    </p>
-                                </Link>
+                                <Reveal key={sectionName} animation="scaleIn">
+                                    <Link
+                                        to={`/photos/${side}/${encodeURIComponent(sectionName.toLowerCase())}`}
+                                        className="group rounded-2xl border border-gold/20 bg-white/70 p-8 shadow-royal transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"
+                                    >
+                                        <p className="text-xs uppercase tracking-[0.35em] text-gold">
+                                            {sectionName}
+                                        </p>
+                                        <p className="mt-4 text-sm text-teak/80">
+                                            View {sectionName.toLowerCase()} moments from the {displaySide} side.
+                                        </p>
+                                    </Link>
+                                </Reveal>
                             );
                         }
                     )}

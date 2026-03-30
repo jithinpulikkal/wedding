@@ -1,4 +1,5 @@
-import { Link, useSearchParams } from "react-router-dom";
+﻿import { Link, useSearchParams } from "react-router-dom";
+import Reveal from "../components/Reveal.jsx";
 
 function buildImageCandidates(id, srcParam) {
     if (id) {
@@ -69,37 +70,41 @@ export default function PhotoView() {
                 </Link>
             </div>
 
-            <div className="flex min-h-[60vh] items-center justify-center rounded-2xl border border-gold/20 bg-white/80 p-4 shadow-royal">
-                <img
-                    src={candidates[0]}
-                    alt={name}
-                    onError={(event) => {
-                        const currentIndex = Number(event.currentTarget.dataset.fallbackIndex || "0");
-                        const nextIndex = currentIndex + 1;
-                        if (candidates[nextIndex]) {
-                            event.currentTarget.dataset.fallbackIndex = String(nextIndex);
-                            event.currentTarget.src = candidates[nextIndex];
-                        }
-                    }}
-                    className="max-h-[80vh] w-full object-contain"
-                />
-            </div>
-
-            <div className="flex flex-wrap items-center justify-between gap-4">
-                <div>
-                    <p className="text-xs uppercase tracking-[0.35em] text-gold">Full Resolution</p>
-                    <p className="mt-2 text-lg font-serif text-maroon">{name}</p>
+            <Reveal animation="fadeIn">
+                <div className="flex min-h-[60vh] items-center justify-center rounded-2xl border border-gold/20 bg-white/80 p-4 shadow-royal">
+                    <img
+                        src={candidates[0]}
+                        alt={name}
+                        onError={(event) => {
+                            const currentIndex = Number(event.currentTarget.dataset.fallbackIndex || "0");
+                            const nextIndex = currentIndex + 1;
+                            if (candidates[nextIndex]) {
+                                event.currentTarget.dataset.fallbackIndex = String(nextIndex);
+                                event.currentTarget.src = candidates[nextIndex];
+                            }
+                        }}
+                        className="max-h-[80vh] w-full object-contain"
+                    />
                 </div>
-                {downloadUrl && (
-                    <a
-                        href={downloadUrl}
-                        download
-                        className="inline-flex items-center justify-center rounded-full border border-gold/60 px-6 py-2 text-xs uppercase tracking-[0.35em] text-maroon transition hover:bg-gold/10"
-                    >
-                        Download
-                    </a>
-                )}
-            </div>
+            </Reveal>
+
+            <Reveal animation="fadeUp">
+                <div className="flex flex-wrap items-center justify-between gap-4">
+                    <div>
+                        <p className="text-xs uppercase tracking-[0.35em] text-gold">Full Resolution</p>
+                        <p className="mt-2 text-lg font-serif text-maroon">{name}</p>
+                    </div>
+                    {downloadUrl && (
+                        <a
+                            href={downloadUrl}
+                            download
+                            className="inline-flex items-center justify-center rounded-full border border-gold/60 px-6 py-2 text-xs uppercase tracking-[0.35em] text-maroon transition hover:bg-gold/10"
+                        >
+                            Download
+                        </a>
+                    )}
+                </div>
+            </Reveal>
         </div>
     );
 }

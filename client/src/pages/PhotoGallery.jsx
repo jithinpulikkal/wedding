@@ -1,8 +1,9 @@
-import { Link, useParams } from "react-router-dom";
+﻿import { Link, useParams } from "react-router-dom";
 import SectionHeader from "../components/SectionHeader.jsx";
 import weddingData from "../data/weddingData.js";
 import usePhotoData from "../hooks/usePhotoData.js";
 import { findCategory, findGroup } from "../utils/photos.js";
+import Reveal from "../components/Reveal.jsx";
 
 function buildImageCandidates(id, fallbackUrl) {
     if (id) {
@@ -89,33 +90,34 @@ export default function PhotoGallery() {
                                 const candidates = buildImageCandidates(item.id, item.thumbUrl || item.viewUrl);
 
                                 return (
-                                    <Link
-                                        key={item.id}
-                                        to={viewLink}
-                                        className="group overflow-hidden rounded-2xl border border-gold/20 bg-white/70 shadow-royal transition hover:border-gold/50 hover:shadow-xl"
-                                    >
-                                        <div className="aspect-[4/3] w-full overflow-hidden bg-ivory">
-                                            <img
-                                                src={candidates[0]}
-                                                alt={item.name}
-                                                loading="lazy"
-                                                onError={(event) => {
-                                                    const currentIndex = Number(
-                                                        event.currentTarget.dataset.fallbackIndex || "0"
-                                                    );
-                                                    const nextIndex = currentIndex + 1;
-                                                    if (candidates[nextIndex]) {
-                                                        event.currentTarget.dataset.fallbackIndex = String(nextIndex);
-                                                        event.currentTarget.src = candidates[nextIndex];
-                                                    }
-                                                }}
-                                                className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
-                                            />
-                                        </div>
-                                        {/* <div className="px-4 py-3 text-xs uppercase tracking-[0.3em] text-teak/80">
-                                            {item.name}
-                                        </div> */}
-                                    </Link>
+                                    <Reveal key={item.id} animation="scaleIn">
+                                        <Link
+                                            to={viewLink}
+                                            className="group overflow-hidden rounded-2xl border border-gold/20 bg-white/70 shadow-royal transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"
+                                        >
+                                            <div className="aspect-[4/3] w-full overflow-hidden bg-ivory">
+                                                <img
+                                                    src={candidates[0]}
+                                                    alt={item.name}
+                                                    loading="lazy"
+                                                    onError={(event) => {
+                                                        const currentIndex = Number(
+                                                            event.currentTarget.dataset.fallbackIndex || "0"
+                                                        );
+                                                        const nextIndex = currentIndex + 1;
+                                                        if (candidates[nextIndex]) {
+                                                            event.currentTarget.dataset.fallbackIndex = String(nextIndex);
+                                                            event.currentTarget.src = candidates[nextIndex];
+                                                        }
+                                                    }}
+                                                    className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                                                />
+                                            </div>
+                                            {/* <div className="px-4 py-3 text-xs uppercase tracking-[0.3em] text-teak/80">
+                                                {item.name}
+                                            </div> */}
+                                        </Link>
+                                    </Reveal>
                                 );
                             })}
                         </div>
