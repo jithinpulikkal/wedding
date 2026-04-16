@@ -1,27 +1,55 @@
-﻿import { useState } from "react";
+﻿import { useEffect, useState } from "react";
 import SectionHeader from "../components/SectionHeader.jsx";
 import IllustrationCard from "../components/IllustrationCard.jsx";
-import FloralDivider from "../components/FloralDivider.jsx";
-import DetailCard, {
-    buildDetailCards,
-    buildWelcomeCards,
-    buildScheduleCard,
-    buildVenueCards,
-} from "../components/DetailCard.jsx";
+import DetailCard, { buildDetailCards, buildWelcomeCards, buildVenueCards } from "../components/DetailCard.jsx";
 import weddingData from "../data/weddingData.js";
 import brideGroomImage from "../assets/bridegroom.jpg";
 import templeImage from "../assets/temple.png";
 import Reveal from "../components/Reveal.jsx";
 
+const WEDDING_TARGET = new Date("2026-09-12T10:45:00+05:30").getTime();
+
+function getCountdownParts(targetTime) {
+    const difference = targetTime - Date.now();
+
+    if (difference <= 0) {
+        return {
+            isComplete: true,
+            days: 0,
+            hours: 0,
+            minutes: 0,
+            seconds: 0,
+        };
+    }
+
+    const totalSeconds = Math.floor(difference / 1000);
+
+    return {
+        isComplete: false,
+        days: Math.floor(totalSeconds / 86400),
+        hours: Math.floor((totalSeconds % 86400) / 3600),
+        minutes: Math.floor((totalSeconds % 3600) / 60),
+        seconds: totalSeconds % 60,
+    };
+}
+
 export default function Home() {
     const { brand, couple, events, invitation, ceremony } = weddingData;
     const detailCards = buildDetailCards(weddingData);
     const welcomeCards = buildWelcomeCards(weddingData);
-    const scheduleCard = buildScheduleCard(weddingData);
     const venueCards = buildVenueCards(weddingData);
 
     const [heroReady, setHeroReady] = useState(false);
+    const [countdown, setCountdown] = useState(() => getCountdownParts(WEDDING_TARGET));
     const handleHeroReady = () => setHeroReady(true);
+
+    useEffect(() => {
+        const intervalId = window.setInterval(() => {
+            setCountdown(getCountdownParts(WEDDING_TARGET));
+        }, 1000);
+
+        return () => window.clearInterval(intervalId);
+    }, []);
 
     return (
         <div id="top" className="space-y-16 pb-20 sm:space-y-16 sm:pb-24">
@@ -67,6 +95,7 @@ export default function Home() {
                             <p className="mt-3 text-2xl font-serif text-maroon sm:text-3xl">{events.wedding.dateText}</p>
                             <p className="mt-3 text-2xl font-serif text-maroon sm:text-3xl">{events.wedding.timeText}</p>
                             <p className="mt-2 text-xl text-maroon font-semibold">{events.wedding.muhurthamText}</p>
+
                             <p className="mt-2 text-x text-teak/80">{events.wedding.description}</p>
                         </div>
                     </Reveal>
@@ -82,6 +111,43 @@ export default function Home() {
                         onImageError={handleHeroReady}
                     />
                 </div>
+            </section>
+            <section className="mx-auto max-w-6xl px-5">
+                <Reveal animation="scaleIn">
+                    <div className="rounded-[2rem] border border-gold/20 bg-gradient-to-br from-parchment via-white/80 to-parchment/90 p-5 shadow-royal sm:p-7">
+                        <div className="text-center">
+                            <p className="text-xs uppercase tracking-[0.32em] text-gold sm:text-sm">Countdown</p>
+                            <p className="mt-2 font-serif text-xl text-maroon sm:text-2xl">{events.wedding.dateText}</p>
+                        </div>
+
+                        {countdown.isComplete ? (
+                            <div className="mt-6 rounded-2xl bg-maroon px-5 py-6 text-center text-parchment">
+                                <p className="text-lg font-semibold sm:text-xl">The wedding celebration has begun.</p>
+                            </div>
+                        ) : (
+                            <div className="mt-6 grid grid-cols-2 gap-3 text-center sm:grid-cols-4 sm:gap-4">
+                                {[
+                                    { label: "Days", value: countdown.days },
+                                    { label: "Hours", value: countdown.hours },
+                                    { label: "Minutes", value: countdown.minutes },
+                                    { label: "Seconds", value: countdown.seconds },
+                                ].map((item) => (
+                                    <div
+                                        key={item.label}
+                                        className="rounded-2xl border border-gold/10 bg-white/70 px-3 py-4 shadow-sm backdrop-blur sm:px-4 sm:py-5"
+                                    >
+                                        <p className="font-serif text-3xl font-bold text-maroon sm:text-4xl">
+                                            {String(item.value).padStart(2, "0")}
+                                        </p>
+                                        <p className="mt-2 text-[0.65rem] uppercase tracking-[0.3em] text-teak/60 sm:text-xs">
+                                            {item.label}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                </Reveal>
             </section>
 
             <section id="details" className="mx-auto max-w-6xl px-5">
