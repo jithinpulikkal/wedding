@@ -8,6 +8,7 @@ import templeImage from "../assets/temple.png";
 import Reveal from "../components/Reveal.jsx";
 
 const WEDDING_TARGET = new Date("2026-09-12T10:45:00+05:30").getTime();
+const WEDDING_END = new Date("2026-09-12T12:30:00+05:30").getTime();
 
 function getCountdownParts(targetTime) {
     const difference = targetTime - Date.now();
@@ -33,8 +34,16 @@ function getCountdownParts(targetTime) {
     };
 }
 
+function formatGoogleCalendarDate(timestamp) {
+    return new Date(timestamp).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z");
+}
+
+function escapeIcsText(value) {
+    return value.replace(/\\/g, "\\\\").replace(/\n/g, "\\n").replace(/,/g, "\\,").replace(/;/g, "\\;");
+}
+
 export default function Home() {
-    const { brand, couple, events, invitation, ceremony } = weddingData;
+    const { brand, couple, events, invitation, ceremony, venues } = weddingData;
     const detailCards = buildDetailCards(weddingData);
     const welcomeCards = buildWelcomeCards(weddingData);
     const venueCards = buildVenueCards(weddingData);
@@ -50,6 +59,47 @@ export default function Home() {
 
         return () => window.clearInterval(intervalId);
     }, []);
+
+    const weddingVenue = venues[0];
+    const eventTitle = `${couple.bride.name} & ${couple.groom.name} Wedding Ceremony`;
+    const eventDescription = `${events.wedding.description} ${invitation.closingLine}`;
+    const eventLocation = [weddingVenue.name, ...weddingVenue.addressLines].join(", ");
+    const googleCalendarLink =
+        "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+        `&text=${encodeURIComponent(eventTitle)}` +
+        `&dates=${formatGoogleCalendarDate(WEDDING_TARGET)}/${formatGoogleCalendarDate(WEDDING_END)}` +
+        `&details=${encodeURIComponent(eventDescription)}` +
+        `&location=${encodeURIComponent(eventLocation)}`;
+
+    const handleCalendarDownload = () => {
+        const icsContent = [
+            "BEGIN:VCALENDAR",
+            "VERSION:2.0",
+            "PRODID:-//Raveena and Jithin Wedding//EN",
+            "CALSCALE:GREGORIAN",
+            "BEGIN:VEVENT",
+            `UID:wedding-${WEDDING_TARGET}@raveena-jithin`,
+            `DTSTAMP:${formatGoogleCalendarDate(Date.now())}`,
+            `DTSTART:${formatGoogleCalendarDate(WEDDING_TARGET)}`,
+            `DTEND:${formatGoogleCalendarDate(WEDDING_END)}`,
+            `SUMMARY:${escapeIcsText(eventTitle)}`,
+            `DESCRIPTION:${escapeIcsText(eventDescription)}`,
+            `LOCATION:${escapeIcsText(eventLocation)}`,
+            "END:VEVENT",
+            "END:VCALENDAR",
+        ].join("\r\n");
+
+        const file = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
+        const url = window.URL.createObjectURL(file);
+        const link = document.createElement("a");
+
+        link.href = url;
+        link.download = "raveena-jithin-wedding.ics";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+    };
 
     return (
         <div id="top" className="space-y-16 pb-20 sm:space-y-16 sm:pb-24">
@@ -146,6 +196,24 @@ export default function Home() {
                                 ))}
                             </div>
                         )}
+
+                        {/* <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
+                            <a
+                                href={googleCalendarLink}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="rounded-full bg-maroon px-5 py-3 text-center text-sm font-semibold uppercase tracking-[0.18em] text-parchment transition hover:bg-maroon/90"
+                            >
+                                Add to Google Calendar
+                            </a>
+                            <button
+                                type="button"
+                                onClick={handleCalendarDownload}
+                                className="rounded-full border border-gold/30 bg-white/80 px-5 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-maroon transition hover:bg-parchment"
+                            >
+                                Download Calendar File
+                            </button>
+                        </div> */}
                     </div>
                 </Reveal>
             </section>
