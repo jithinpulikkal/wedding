@@ -102,7 +102,7 @@ export default function Home() {
     };
 
     return (
-        <div id="top" className="space-y-16 pb-20 sm:space-y-16 sm:pb-24">
+        <div id="top" className="space-y-16  sm:space-y-16 pb-12">
             <section className="mx-auto grid max-w-6xl items-center gap-8 px-5 sm:gap-12 sm:pt-10 md:grid-cols-2">
                 <div className="space-y-6 sm:space-y-4">
                     <p className="text-4xl font-bold uppercase tracking-[0.35em] text-gold">{invitation.title}</p>

@@ -30,10 +30,10 @@ export default function Layout() {
     }, [location.pathname, location.hash]);
 
     return (
-        <div className="min-h-screen bg-temple-pattern text-teak">
+        <div className="flex min-h-screen flex-col bg-temple-pattern text-teak">
             <Navbar activePath={location.pathname} />
 
-            <main className="pt-20 sm:pt-24">
+            <main className="flex-1 pt-20 sm:pt-24">
                 <Outlet />
             </main>
 
