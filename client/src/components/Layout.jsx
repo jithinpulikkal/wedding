@@ -33,7 +33,7 @@ export default function Layout() {
         <div className="flex min-h-screen flex-col bg-temple-pattern text-teak">
             <Navbar activePath={location.pathname} />
 
-            <main className="flex-1 pt-20 sm:pt-24">
+            <main className="flex-1 overflow-x-clip pt-20 sm:pt-24">
                 <Outlet />
             </main>
 

@@ -12,6 +12,7 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 96px;
   scrollbar-width: none;
+  overflow-x: clip;
 }
 
 html::-webkit-scrollbar {
@@ -27,6 +28,7 @@ body {
   background-color: #fbf3e6;
   color: #3b2b21;
   scrollbar-width: none;
+  overflow-x: clip;
 }
 
 body::-webkit-scrollbar {

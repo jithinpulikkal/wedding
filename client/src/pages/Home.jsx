@@ -103,12 +103,14 @@ export default function Home() {
 
     return (
         <div id="top" className="space-y-16  sm:space-y-16 pb-12">
-            <section className="mx-auto grid max-w-6xl items-center gap-8 px-5 sm:gap-12 sm:pt-10 lg:grid-cols-2">
-                <div className="space-y-6 sm:space-y-4">
-                    <p className="text-3xl font-bold uppercase tracking-[0.22em] text-gold sm:text-4xl sm:tracking-[0.35em]">
+            <section className="mx-auto grid max-w-6xl items-center gap-8 px-4 sm:gap-12 sm:px-5 sm:pt-10 lg:grid-cols-2">
+                <div className="min-w-0 space-y-6 sm:space-y-4">
+                    <p className="break-words text-2xl font-bold uppercase tracking-[0.18em] text-gold sm:text-4xl sm:tracking-[0.35em]">
                         {invitation.title}
                     </p>
-                    <p className="text-sm uppercase tracking-[0.22em] text-teak/70 sm:text-base sm:tracking-[0.3em]">{brand.subtitle}</p>
+                    <p className="break-words text-sm uppercase tracking-[0.18em] text-teak/70 sm:text-base sm:tracking-[0.3em]">
+                        {brand.subtitle}
+                    </p>
 
                     <div className="lg:hidden">
                         <IllustrationCard
@@ -125,8 +127,8 @@ export default function Home() {
                     <Reveal animation="scaleIn">
                         {heroReady ? (
                             <Reveal animation="fadeInSlow">
-                                <h1 className="font-serif text-maroon font-bold text-4xl leading-tight text-center sm:text-5xl lg:text-6xl">
-                                    <span className="block break-words xl:text-nowrap">{couple.bride.name}</span>
+                                <h1 className="min-w-0 font-serif text-maroon text-center text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+                                    <span className="block break-words">{couple.bride.name}</span>
 
                                     <span className="my-2 block text-2xl font-medium text-gold sm:text-3xl lg:text-4xl">
                                         &
@@ -152,7 +154,7 @@ export default function Home() {
                         </div>
                     </Reveal>
                 </div>
-                <div className="hidden lg:block">
+                <div className="min-w-0 hidden lg:block">
                     <IllustrationCard
                         title="Bride & Groom"
                         subtitle="Traditional Kerala wedding portrait"
