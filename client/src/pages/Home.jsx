@@ -103,12 +103,14 @@ export default function Home() {
 
     return (
         <div id="top" className="space-y-16  sm:space-y-16 pb-12">
-            <section className="mx-auto grid max-w-6xl items-center gap-8 px-5 sm:gap-12 sm:pt-10 md:grid-cols-2">
+            <section className="mx-auto grid max-w-6xl items-center gap-8 px-5 sm:gap-12 sm:pt-10 lg:grid-cols-2">
                 <div className="space-y-6 sm:space-y-4">
-                    <p className="text-4xl font-bold uppercase tracking-[0.35em] text-gold">{invitation.title}</p>
-                    <p className="text-base uppercase tracking-[0.3em] text-teak/70 sm:text-base">{brand.subtitle}</p>
+                    <p className="text-3xl font-bold uppercase tracking-[0.22em] text-gold sm:text-4xl sm:tracking-[0.35em]">
+                        {invitation.title}
+                    </p>
+                    <p className="text-sm uppercase tracking-[0.22em] text-teak/70 sm:text-base sm:tracking-[0.3em]">{brand.subtitle}</p>
 
-                    <div className="md:hidden">
+                    <div className="lg:hidden">
                         <IllustrationCard
                             title="Bride & Groom"
                             subtitle="Traditional Kerala wedding portrait"
@@ -123,14 +125,14 @@ export default function Home() {
                     <Reveal animation="scaleIn">
                         {heroReady ? (
                             <Reveal animation="fadeInSlow">
-                                <h1 className="font-serif text-maroon font-bold text-4xl sm:text-5xl md:text-6xl leading-tight text-center">
-                                    <span className="block whitespace-nowrap">{couple.bride.name}</span>
+                                <h1 className="font-serif text-maroon font-bold text-4xl leading-tight text-center sm:text-5xl lg:text-6xl">
+                                    <span className="block break-words xl:text-nowrap">{couple.bride.name}</span>
 
-                                    <span className="block text-2xl sm:text-3xl md:text-4xl my-2 text-gold font-medium">
+                                    <span className="my-2 block text-2xl font-medium text-gold sm:text-3xl lg:text-4xl">
                                         &
                                     </span>
 
-                                    <span className="block">{couple.groom.name}</span>
+                                    <span className="block break-words">{couple.groom.name}</span>
                                 </h1>
                             </Reveal>
                         ) : (
@@ -150,7 +152,7 @@ export default function Home() {
                         </div>
                     </Reveal>
                 </div>
-                <div className="hidden md:block">
+                <div className="hidden lg:block">
                     <IllustrationCard
                         title="Bride & Groom"
                         subtitle="Traditional Kerala wedding portrait"
