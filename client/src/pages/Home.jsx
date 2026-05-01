@@ -106,7 +106,7 @@ export default function Home() {
 
     return (
         <div id="top" className="space-y-16  sm:space-y-16 pb-12">
-            <section className="mx-auto max-w-6xl px-4 sm:px-5 sm:pt-10">
+            <section className="mx-auto max-w-6xl px-4 sm:px-5 py-auto">
                 <div className="mx-auto max-w-4xl min-w-0 space-y-6 text-center sm:space-y-4">
                     <Reveal animation="fadeInSlow" delay={0}>
                         <p className="break-words md:mt-10 mt-36  text-2xl font-bold uppercase tracking-[0.18em] text-gold sm:text-4xl sm:tracking-[0.35em]">
