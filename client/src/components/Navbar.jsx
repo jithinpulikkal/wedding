@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaMoon, FaSun } from "react-icons/fa6";
+import { FaImage, FaMoon, FaSun } from "react-icons/fa6";
 import weddingData from "../data/weddingData.js";
 
 function ThemeToggle({ isDarkMode, onToggleTheme }) {
@@ -62,9 +62,10 @@ export default function Navbar({ activePath, isDarkMode, onToggleTheme }) {
                     <ThemeToggle isDarkMode={isDarkMode} onToggleTheme={onToggleTheme} />
                     <Link
                         to="/photos"
-                        className="inline-flex items-center rounded-full px-3 py-1 text-xs uppercase tracking-[0.24em] text-maroon transition-all duration-300 hover:bg-gold/10 shadow-md hover:scale-105 hover:shadow-lg sm:px-5 sm:text-sm sm:tracking-[0.3em]"
+                        className="inline-flex h-6 w-6 items-center justify-center rounded-full  text-maroon shadow-md backdrop-blur-md transition-all duration-300 hover:scale-105 hover:bg-gold/20 hover:shadow-lg dark:text-gold"
+                        aria-label={nav.photosLabel}
                     >
-                        {nav.photosLabel}
+                        <FaImage className="text-sm" />
                     </Link>
                 </div>
             </div>
