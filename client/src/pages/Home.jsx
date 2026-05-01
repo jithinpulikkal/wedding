@@ -114,35 +114,15 @@ export default function Home() {
                     <p className="break-words text-sm uppercase tracking-[0.18em] text-teak/70 sm:text-base sm:tracking-[0.3em]">
                         {brand.subtitle}
                     </p>
-
-                    {/* <div className="lg:hidden">
-                        <IllustrationCard
-                            title="Bride & Groom"
-                            subtitle="Traditional Kerala wedding portrait"
-                            imageSrc={brideGroomImage}
-                            imageAlt="Bride and groom illustration"
-                            imageLoading="eager"
-                            onImageLoad={handleHeroReady}
-                            onImageError={handleHeroReady}
-                        />
-                    </div> */}
                     <p className="text-base text-teak/80 sm:text-xl">{invitation.message}</p>
-                    <Reveal animation="scaleIn">
-                        {heroReady ? (
-                            <Reveal animation="fadeInSlow">
-                                <h1 className="min-w-0 font-serif text-maroon text-center text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-                                    <span className="block break-words">{couple.bride.name}</span>
+                    <Reveal animation="fadeInSlow">
+                        <h1 className="min-w-0 font-serif text-maroon text-center text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+                            <span className="block break-words">{couple.bride.name}</span>
 
-                                    <span className="my-2 block text-2xl font-medium text-gold sm:text-3xl lg:text-4xl">
-                                        &
-                                    </span>
+                            <span className="my-2 block text-2xl font-medium text-gold sm:text-3xl lg:text-4xl">&</span>
 
-                                    <span className="block break-words">{couple.groom.name}</span>
-                                </h1>
-                            </Reveal>
-                        ) : (
-                            <div className="h-[7.5rem] sm:h-[8.5rem] md:h-[9.5rem]" />
-                        )}
+                            <span className="block break-words">{couple.groom.name}</span>
+                        </h1>
                     </Reveal>
 
                     <p className="text-base text-teak/70 sm:text-xl pt-4">{brand.tagline}</p>
@@ -157,7 +137,6 @@ export default function Home() {
                         </div>
                     </Reveal>
                 </div>
-                
             </section>
             <section className="mx-auto max-w-6xl px-5">
                 <Reveal animation="scaleIn">
