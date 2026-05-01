@@ -35,7 +35,10 @@ function getCountdownParts(targetTime) {
 }
 
 function formatGoogleCalendarDate(timestamp) {
-    return new Date(timestamp).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z");
+    return new Date(timestamp)
+        .toISOString()
+        .replace(/[-:]/g, "")
+        .replace(/\.\d{3}Z$/, "Z");
 }
 
 function escapeIcsText(value) {
@@ -103,8 +106,8 @@ export default function Home() {
 
     return (
         <div id="top" className="space-y-16  sm:space-y-16 pb-12">
-            <section className="mx-auto grid max-w-6xl items-center gap-8 px-4 sm:gap-12 sm:px-5 sm:pt-10 lg:grid-cols-2">
-                <div className="min-w-0 space-y-6 sm:space-y-4">
+            <section className="mx-auto max-w-6xl px-4 sm:px-5 sm:pt-10">
+                <div className="mx-auto max-w-4xl min-w-0 space-y-6 text-center sm:space-y-4">
                     <p className="break-words text-2xl font-bold uppercase tracking-[0.18em] text-gold sm:text-4xl sm:tracking-[0.35em]">
                         {invitation.title}
                     </p>
@@ -112,7 +115,7 @@ export default function Home() {
                         {brand.subtitle}
                     </p>
 
-                    <div className="lg:hidden">
+                    {/* <div className="lg:hidden">
                         <IllustrationCard
                             title="Bride & Groom"
                             subtitle="Traditional Kerala wedding portrait"
@@ -122,7 +125,7 @@ export default function Home() {
                             onImageLoad={handleHeroReady}
                             onImageError={handleHeroReady}
                         />
-                    </div>
+                    </div> */}
                     <p className="text-base text-teak/80 sm:text-xl">{invitation.message}</p>
                     <Reveal animation="scaleIn">
                         {heroReady ? (
@@ -154,17 +157,7 @@ export default function Home() {
                         </div>
                     </Reveal>
                 </div>
-                <div className="min-w-0 hidden lg:block">
-                    <IllustrationCard
-                        title="Bride & Groom"
-                        subtitle="Traditional Kerala wedding portrait"
-                        imageSrc={brideGroomImage}
-                        imageAlt="Bride and groom illustration"
-                        imageLoading="eager"
-                        onImageLoad={handleHeroReady}
-                        onImageError={handleHeroReady}
-                    />
-                </div>
+                
             </section>
             <section className="mx-auto max-w-6xl px-5">
                 <Reveal animation="scaleIn">
@@ -223,34 +216,18 @@ export default function Home() {
             </section>
 
             <section id="details" className="mx-auto max-w-6xl px-5">
-                <SectionHeader eyebrow="Wedding Details" title="A Traditional Kerala Celebration" description={ceremony.intro} />
+                <SectionHeader
+                    eyebrow="Wedding Details"
+                    title="A Traditional Kerala Celebration"
+                    description={ceremony.intro}
+                />
 
-                <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-5">
-                    <div className="lg:col-span-3">
-                        <IllustrationCard
-                            title="Temple Visual"
-                            subtitle="Kerala temple ambience"
-                            imageSrc={templeImage}
-                            imageAlt="Kerala temple illustration"
-                        />
-                    </div>
-
-                    <div className="lg:col-span-2 flex flex-col gap-6">
-                        {detailCards.map((card) => (
-                            <DetailCard key={card.key} {...card} />
-                        ))}
-                    </div>
+                <div className="mt-10 grid gap-6 md:grid-cols-2 md:auto-rows-fr">
+                    {detailCards.map((card) => (
+                        <DetailCard key={card.key} {...card} className="h-full" />
+                    ))}
                 </div>
             </section>
-
-            {/* <section className="mx-auto max-w-6xl px-5">
-                <SectionHeader
-                    eyebrow="Schedule"
-                    title="Wedding Day Timeline"
-                    description="A gentle flow of ceremonies, rituals, and celebration across the day."
-                />
-                <DetailCard {...scheduleCard} />
-            </section> */}
 
             <section className="mx-auto grid max-w-6xl items-center gap-8 px-5 sm:gap-12">
                 <div className="space-y-6">
