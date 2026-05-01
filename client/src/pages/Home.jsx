@@ -146,7 +146,7 @@ export default function Home() {
             </section>
             <section className="mx-auto max-w-6xl px-4 sm:px-5 sm:pt-10">
                 <div className="mx-auto max-w-4xl min-w-0 space-y-6 text-center sm:space-y-4">
-                    <Reveal animation="fadeInSlow" delay={0}>
+                    <Reveal animation="scaleIn">
                         <div className="rounded-2xl border border-gold/20 bg-parchment/70 p-5 shadow-royal sm:p-6">
                             <p className="text-lg uppercase tracking-[0.3em] text-gold">{events.wedding.title}</p>
                             <p className="mt-3 text-2xl font-serif text-maroon sm:text-3xl">{events.wedding.dateText}</p>
