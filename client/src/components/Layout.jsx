@@ -59,7 +59,7 @@ export default function Layout() {
                 <Outlet />
             </main>
 
-            <div className="relative z-20">
+            <div className="relative z-20 opacity-95">
                 <Footer />
             </div>
         </div>

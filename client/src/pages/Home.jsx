@@ -108,33 +108,45 @@ export default function Home() {
         <div id="top" className="space-y-16  sm:space-y-16 pb-12">
             <section className="mx-auto max-w-6xl px-4 sm:px-5 sm:pt-10">
                 <div className="mx-auto max-w-4xl min-w-0 space-y-6 text-center sm:space-y-4">
-                    <Reveal animation="fadeInSlow">
-                        <p className="break-words text-2xl font-bold uppercase tracking-[0.18em] text-gold sm:text-4xl sm:tracking-[0.35em]">
+                    <Reveal animation="fadeInSlow" delay={0}>
+                        <p className="break-words md:mt-10 mt-36  text-2xl font-bold uppercase tracking-[0.18em] text-gold sm:text-4xl sm:tracking-[0.35em]">
                             {invitation.title}
                         </p>
                     </Reveal>
-                    <Reveal animation="fadeInSlow">
+                    <Reveal animation="fadeInSlow" delay={900}>
                         <p className="break-words text-sm uppercase tracking-[0.18em] text-teak/70 sm:text-base sm:tracking-[0.3em]">
                             {brand.subtitle}
                         </p>
                     </Reveal>
-                    <Reveal animation="fadeInSlow">
-                        <p className="text-base text-teak/80 sm:text-xl">{invitation.message}</p>
+                    <Reveal animation="fadeInSlow" delay={1800}>
+                        <p className="text-base text-teak/80 sm:text-xl">{invitation.message1}</p>
                     </Reveal>
-                    <Reveal animation="fadeInSlow">
+                    <Reveal animation="fadeInSlow" delay={2700}>
                         <h1 className="min-w-0 font-serif text-maroon text-center text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
                             <span className="block break-words">{couple.bride.name}</span>
-
+                        </h1>
+                    </Reveal>
+                    <Reveal animation="fadeInSlow" delay={3600}>
+                        <h1 className="min-w-0 font-serif text-maroon text-center text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
                             <span className="my-2 block text-2xl font-medium text-gold sm:text-3xl lg:text-4xl">&</span>
-
+                        </h1>
+                    </Reveal>
+                    <Reveal animation="fadeInSlow" delay={4500}>
+                        <h1 className="min-w-0 font-serif text-maroon text-center text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
                             <span className="block break-words">{couple.groom.name}</span>
                         </h1>
                     </Reveal>
-
-                    <Reveal animation="fadeInSlow">
+                    <Reveal animation="fadeInSlow" delay={5400}>
+                        <p className="text-base text-teak/80 sm:text-xl">{invitation.message2}</p>
+                    </Reveal>
+                    <Reveal animation="fadeInSlow" delay={6300}>
                         <p className="text-base text-teak/70 sm:text-xl pt-4">{brand.tagline}</p>
                     </Reveal>
-                    <Reveal animation="fadeInSlow">
+                </div>
+            </section>
+            <section className="mx-auto max-w-6xl px-4 sm:px-5 sm:pt-10">
+                <div className="mx-auto max-w-4xl min-w-0 space-y-6 text-center sm:space-y-4">
+                    <Reveal animation="fadeInSlow" delay={0}>
                         <div className="rounded-2xl border border-gold/20 bg-parchment/70 p-5 shadow-royal sm:p-6">
                             <p className="text-lg uppercase tracking-[0.3em] text-gold">{events.wedding.title}</p>
                             <p className="mt-3 text-2xl font-serif text-maroon sm:text-3xl">{events.wedding.dateText}</p>

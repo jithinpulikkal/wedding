@@ -23,10 +23,14 @@ function ThemeToggle({ isDarkMode, onToggleTheme }) {
 export default function Navbar({ activePath, isDarkMode, onToggleTheme }) {
     const { brand, nav } = weddingData;
 
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
     return (
         <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-ivory/90 border-b border-gold/20">
             <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-5 sm:py-5">
-                <Link to="/" className="flex min-w-0 items-center gap-2 sm:gap-3">
+                <Link to="/" onClick={scrollToTop} className="flex min-w-0 items-center gap-2 sm:gap-3">
                     <span className="text-2xl font-serif tracking-[0.12em] text-maroon sm:text-3xl lg:text-4xl">
                         {brand.monogram}
                     </span>
