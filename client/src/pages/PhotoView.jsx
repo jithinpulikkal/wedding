@@ -71,7 +71,7 @@ export default function PhotoView() {
             </div>
 
             <Reveal animation="fadeIn">
-                <div className="flex min-h-[60vh] items-center justify-center rounded-2xl border border-gold/20 bg-white/80 p-4 shadow-royal">
+                <div className="flex min-h-[60vh] items-center justify-center rounded-2xl border border-gold/20 bg-surface/80 p-4 shadow-royal">
                     <img
                         src={candidates[0]}
                         alt={name}

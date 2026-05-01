@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <title>Wedding Invitation</title>
+    <script>
+      (() => {
+        const storedTheme = window.localStorage.getItem("theme");
+        const shouldUseDark = storedTheme ? storedTheme === "dark" : true;
+
+        document.documentElement.classList.toggle("dark", shouldUseDark);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

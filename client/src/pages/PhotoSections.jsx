@@ -41,19 +41,19 @@ export default function PhotoSections() {
             </div>
 
             {photoState.status === "loading" && (
-                <div className="rounded-2xl border border-gold/20 bg-white/70 p-8 text-sm uppercase tracking-[0.35em] text-gold shadow-royal">
+                <div className="rounded-2xl border border-gold/20 bg-surface/70 p-8 text-sm uppercase tracking-[0.35em] text-gold shadow-royal">
                     Loading sections...
                 </div>
             )}
 
             {photoState.status === "error" && (
-                <div className="rounded-2xl border border-gold/20 bg-white/70 p-8 text-sm uppercase tracking-[0.35em] text-maroon shadow-royal">
+                <div className="rounded-2xl border border-gold/20 bg-surface/70 p-8 text-sm uppercase tracking-[0.35em] text-maroon shadow-royal">
                     {photoState.message}
                 </div>
             )}
 
             {photoState.status !== "loading" && !group && (
-                <div className="rounded-2xl border border-gold/20 bg-white/70 p-8 text-sm uppercase tracking-[0.35em] text-maroon shadow-royal">
+                <div className="rounded-2xl border border-gold/20 bg-surface/70 p-8 text-sm uppercase tracking-[0.35em] text-maroon shadow-royal">
                     No matching photo group found for ï¿½{displaySide || side}ï¿½.
                 </div>
             )}
@@ -67,7 +67,7 @@ export default function PhotoSections() {
                                 <Reveal key={sectionName} animation="scaleIn" asChild>
                                     <Link
                                         to={`/photos/${side}/${encodeURIComponent(sectionName.toLowerCase())}`}
-                                        className="group rounded-2xl border border-gold/20 bg-white/70 p-8 shadow-royal transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"
+                                        className="group rounded-2xl border border-gold/20 bg-surface/70 p-8 shadow-royal transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"
                                     >
                                         <p className="text-xs uppercase tracking-[0.35em] text-gold">
                                             {sectionName}

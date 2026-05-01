@@ -4,8 +4,8 @@ export default function Footer() {
     const { footer } = weddingData;
 
     return (
-        <footer className=" bg-ivory/90 backdrop-blur-xl">
-            <div className="mx-auto max-w-6xl px-5 text-center py-1">
+        <footer className="bg-ivory/90 backdrop-blur-xl">
+            <div className="mx-auto max-w-6xl px-5 text-center pt-6">
                 {/* Main Message */}
                 <p className="font-serif text-lg sm:text-xl text-maroon leading-relaxed max-w-2xl mx-auto">
                     {footer.message}

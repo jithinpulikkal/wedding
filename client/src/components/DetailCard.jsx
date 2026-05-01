@@ -6,7 +6,7 @@ const normalizeLines = (lines = []) => lines.filter((line) => isNonEmpty(line));
 
 const normalizeItems = (items = []) => items.filter((item) => isNonEmpty(item?.time) || isNonEmpty(item?.event));
 
-const getCardClass = (variant) => (variant === "parchment" ? "bg-parchment/70" : "bg-white/70");
+const getCardClass = (variant) => (variant === "parchment" ? "bg-parchment/70" : "bg-surface/70");
 
 export function DetailCard({ eyebrow, title, subtitle, lines, mapLink, variant = "white", layout = "list", items = [] }) {
     const normalizedLines = normalizeLines(lines);
@@ -65,7 +65,7 @@ export function DetailCard({ eyebrow, title, subtitle, lines, mapLink, variant =
                             href={mapLink}
                             target="_blank"
                             rel="noreferrer"
-                            className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-2 text-sm font-semibold uppercase tracking-[0.25em] text-maroon shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                            className="group inline-flex items-center gap-2 rounded-full bg-surface px-6 py-2 text-sm font-semibold uppercase tracking-[0.25em] text-maroon shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg"
                         >
                             <span>Open Map</span>
 

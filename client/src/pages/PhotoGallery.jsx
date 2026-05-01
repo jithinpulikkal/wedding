@@ -57,19 +57,19 @@ export default function PhotoGallery() {
             </div>
 
             {photoState.status === "loading" && (
-                <div className="rounded-2xl border border-gold/20 bg-white/70 p-8 text-sm uppercase tracking-[0.35em] text-gold shadow-royal">
+                <div className="rounded-2xl border border-gold/20 bg-surface/70 p-8 text-sm uppercase tracking-[0.35em] text-gold shadow-royal">
                     Loading photos...
                 </div>
             )}
 
             {photoState.status === "error" && (
-                <div className="rounded-2xl border border-gold/20 bg-white/70 p-8 text-sm uppercase tracking-[0.35em] text-maroon shadow-royal">
+                <div className="rounded-2xl border border-gold/20 bg-surface/70 p-8 text-sm uppercase tracking-[0.35em] text-maroon shadow-royal">
                     {photoState.message}
                 </div>
             )}
 
             {photoState.status !== "loading" && (!group || !category) && (
-                <div className="rounded-2xl border border-gold/20 bg-white/70 p-8 text-sm uppercase tracking-[0.35em] text-maroon shadow-royal">
+                <div className="rounded-2xl border border-gold/20 bg-surface/70 p-8 text-sm uppercase tracking-[0.35em] text-maroon shadow-royal">
                     No matching photo section found.
                 </div>
             )}
@@ -93,7 +93,7 @@ export default function PhotoGallery() {
                                     <Reveal key={item.id} animation="scaleIn" asChild>
                                         <Link
                                             to={viewLink}
-                                            className="group overflow-hidden rounded-2xl border border-gold/20 bg-white/70 shadow-royal transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"
+                                            className="group overflow-hidden rounded-2xl border border-gold/20 bg-surface/70 shadow-royal transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"
                                         >
                                             <div className="aspect-[4/3] w-full overflow-hidden bg-ivory">
                                                 <img

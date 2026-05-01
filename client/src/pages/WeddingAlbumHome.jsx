@@ -9,7 +9,7 @@ function SectionCard({ side, section }) {
     return (
         <Link
             to={`/photos/${side}/${encodeURIComponent(section.toLowerCase())}`}
-            className="group rounded-2xl border border-gold/20 bg-white/70 p-6 shadow-royal transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"
+            className="group rounded-2xl border border-gold/20 bg-surface/70 p-6 shadow-royal transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"
         >
             <p className="text-xs uppercase tracking-[0.35em] text-gold">{section}</p>
             <p className="mt-3 text-sm text-teak/80">
@@ -70,20 +70,20 @@ export default function WeddingAlbumHome() {
             />
 
             {photoState.status === "loading" && (
-                <div className="rounded-2xl border border-gold/20 bg-white/70 p-8 text-sm uppercase tracking-[0.35em] text-gold shadow-royal">
+                <div className="rounded-2xl border border-gold/20 bg-surface/70 p-8 text-sm uppercase tracking-[0.35em] text-gold shadow-royal">
                     Loading album...
                 </div>
             )}
 
             {photoState.status === "error" && (
-                <div className="rounded-2xl border border-gold/20 bg-white/70 p-8 text-sm uppercase tracking-[0.35em] text-maroon shadow-royal">
+                <div className="rounded-2xl border border-gold/20 bg-surface/70 p-8 text-sm uppercase tracking-[0.35em] text-maroon shadow-royal">
                     {photoState.message}
                 </div>
             )}
 
             {photoState.status !== "loading" && heroItem && heroCandidates.length > 0 && (
                 <Reveal animation="fadeIn">
-                    <div className="mb-12 overflow-hidden rounded-3xl border border-gold/20 bg-white/80 shadow-royal">
+                    <div className="mb-12 overflow-hidden rounded-3xl border border-gold/20 bg-surface/80 shadow-royal">
                         <div className="relative flex  items-center justify-center overflow-hidden">
                             <IllustrationCard
                                 title="Bride & Groom"
@@ -99,13 +99,13 @@ export default function WeddingAlbumHome() {
             {photoState.status !== "loading" && (
                 <div className="space-y-12">
                     <Reveal animation="fadeIn">
-                        <div className="rounded-2xl border border-gold/20 bg-white/70 p-8 shadow-royal">
+                        <div className="rounded-2xl border border-gold/20 bg-surface/70 p-8 shadow-royal">
                             <p className="text-xs uppercase tracking-[0.35em] text-gold">Browse by Side</p>
                             <div className="mt-6 grid gap-6 sm:grid-cols-2">
                                 <Reveal animation="scaleIn" asChild>
                                     <Link
                                         to="/photos/bride"
-                                        className="group rounded-2xl border border-gold/20 bg-white/70 p-6 shadow-royal transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"
+                                        className="group rounded-2xl border border-gold/20 bg-surface/70 p-6 shadow-royal transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"
                                     >
                                         <p className="text-xs uppercase tracking-[0.35em] text-gold">Bride Side</p>
                                         <p className="mt-3 text-sm text-teak/80">View albums from Raveena's family.</p>
@@ -114,7 +114,7 @@ export default function WeddingAlbumHome() {
                                 <Reveal animation="scaleIn" asChild>
                                     <Link
                                         to="/photos/groom"
-                                        className="group rounded-2xl border border-gold/20 bg-white/70 p-6 shadow-royal transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"
+                                        className="group rounded-2xl border border-gold/20 bg-surface/70 p-6 shadow-royal transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"
                                     >
                                         <p className="text-xs uppercase tracking-[0.35em] text-gold">Groom Side</p>
                                         <p className="mt-3 text-sm text-teak/80">View albums from Jithin's family.</p>
@@ -126,7 +126,7 @@ export default function WeddingAlbumHome() {
 
                     {!brideSections.length && !groomSections.length && (
                         <Reveal animation="fadeIn">
-                            <div className="rounded-2xl border border-gold/20 bg-white/70 p-8 text-sm uppercase tracking-[0.35em] text-gold shadow-royal">
+                            <div className="rounded-2xl border border-gold/20 bg-surface/70 p-8 text-sm uppercase tracking-[0.35em] text-gold shadow-royal">
                                 Albums will appear here once photos are uploaded.
                             </div>
                         </Reveal>

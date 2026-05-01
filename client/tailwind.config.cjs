@@ -1,27 +1,30 @@
 ﻿/** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,jsx}"],
   theme: {
     extend: {
       colors: {
-        parchment: "#fbf3e6",
-        gold: "#b7872c",
-        maroon: "#6a1f1f",
-        rose: "#e6b7b7",
-        sage: "#5f7a5b",
-        teak: "#3b2b21"
+        parchment: "rgb(var(--parchment-rgb) / <alpha-value>)",
+        ivory: "rgb(var(--ivory-rgb) / <alpha-value>)",
+        surface: "rgb(var(--surface-rgb) / <alpha-value>)",
+        gold: "rgb(var(--gold-rgb) / <alpha-value>)",
+        maroon: "rgb(var(--maroon-rgb) / <alpha-value>)",
+        rose: "rgb(var(--rose-rgb) / <alpha-value>)",
+        sage: "rgb(var(--sage-rgb) / <alpha-value>)",
+        teak: "rgb(var(--teak-rgb) / <alpha-value>)"
       },
       fontFamily: {
         serif: ["Playfair Display", "serif"],
         body: ["Source Serif 4", "serif"]
       },
       backgroundImage: {
-        "temple-pattern": "radial-gradient(circle at 20% 20%, rgba(183, 135, 44, 0.18), transparent 45%), radial-gradient(circle at 80% 10%, rgba(183, 135, 44, 0.12), transparent 40%), linear-gradient(135deg, #fbf3e6 0%, #f7ebd8 45%, #f0dfc3 100%)",
-        "paper": "radial-gradient(circle at top, rgba(255,255,255,0.6), transparent 55%), linear-gradient(180deg, #fbf3e6 0%, #f7ebd8 55%, #f1e0c6 100%)"
+        "temple-pattern": "radial-gradient(circle at 20% 20%, rgb(var(--gold-rgb) / 0.18), transparent 45%), radial-gradient(circle at 80% 10%, rgb(var(--gold-rgb) / 0.12), transparent 40%), linear-gradient(135deg, rgb(var(--parchment-rgb)) 0%, rgb(var(--ivory-rgb)) 45%, rgb(var(--surface-rgb)) 100%)",
+        "paper": "radial-gradient(circle at top, rgb(var(--surface-rgb) / 0.6), transparent 55%), linear-gradient(180deg, rgb(var(--parchment-rgb)) 0%, rgb(var(--ivory-rgb)) 55%, rgb(var(--surface-rgb)) 100%)"
       },
       boxShadow: {
-        royal: "0 20px 60px rgba(79, 40, 16, 0.22)",
-        glow: "0 0 28px rgba(183, 135, 44, 0.35)"
+        royal: "0 20px 60px rgb(var(--shadow-rgb) / 0.22)",
+        glow: "0 0 28px rgb(var(--gold-rgb) / 0.35)"
       },
       keyframes: {
         fadeUp: {

@@ -168,7 +168,7 @@ export default function Home() {
             </section>
             <section className="mx-auto max-w-6xl px-5">
                 <Reveal animation="scaleIn">
-                    <div className="rounded-[2rem] border border-gold/20 bg-gradient-to-br from-parchment via-white/80 to-parchment/90 p-5 shadow-royal sm:p-7">
+                    <div className="rounded-[2rem] border border-gold/20 bg-gradient-to-br from-parchment via-surface/80 to-parchment/90 p-5 shadow-royal sm:p-7">
                         <div className="text-center">
                             <p className="text-xs uppercase tracking-[0.32em] text-gold sm:text-sm">Countdown</p>
                             <p className="mt-2 font-serif text-xl text-maroon sm:text-2xl">{events.wedding.dateText}</p>
@@ -188,7 +188,7 @@ export default function Home() {
                                 ].map((item) => (
                                     <div
                                         key={item.label}
-                                        className="rounded-2xl border border-gold/10 bg-white/70 px-3 py-4 shadow-sm backdrop-blur sm:px-4 sm:py-5"
+                                        className="rounded-2xl border border-gold/10 bg-surface/70 px-3 py-4 shadow-sm backdrop-blur sm:px-4 sm:py-5"
                                     >
                                         <p className="font-serif text-3xl font-bold text-maroon sm:text-4xl">
                                             {String(item.value).padStart(2, "0")}

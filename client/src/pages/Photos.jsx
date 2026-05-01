@@ -14,13 +14,13 @@ export default function Photos() {
             <SectionHeader eyebrow="Photos" title="Wedding Memories" description={weddingData.photos.notice} />
 
             {photoState.status === "loading" && (
-                <div className="rounded-2xl border border-gold/20 bg-white/70 p-8 text-sm uppercase tracking-[0.35em] text-gold shadow-royal">
+                <div className="rounded-2xl border border-gold/20 bg-surface/70 p-8 text-sm uppercase tracking-[0.35em] text-gold shadow-royal">
                     Loading photos...
                 </div>
             )}
 
             {photoState.status === "error" && (
-                <div className="rounded-2xl border border-gold/20 bg-white/70 p-8 text-sm uppercase tracking-[0.35em] text-maroon shadow-royal">
+                <div className="rounded-2xl border border-gold/20 bg-surface/70 p-8 text-sm uppercase tracking-[0.35em] text-maroon shadow-royal">
                     {photoState.message}
                 </div>
             )}
@@ -31,7 +31,7 @@ export default function Photos() {
                         <Reveal key={label} animation="scaleIn" asChild>
                             <Link
                                 to={`/photos/${label}`}
-                                className="group rounded-2xl border border-gold/20 bg-white/70 p-8 shadow-royal transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"
+                                className="group rounded-2xl border border-gold/20 bg-surface/70 p-8 shadow-royal transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"
                             >
                                 <p className="text-xs uppercase tracking-[0.35em] text-gold">
                                     {label === "bride" ? "Bride Side" : "Groom Side"}
@@ -54,7 +54,7 @@ export default function Photos() {
                         {placeholderPhotos.map((item) => (
                             <Reveal key={item} animation="scaleIn" asChild>
                                 <div
-                                    className="flex h-40 items-center justify-center rounded-2xl border border-gold/20 bg-white/70 text-sm uppercase tracking-widest text-gold shadow-royal transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-gold/40"
+                                    className="flex h-40 items-center justify-center rounded-2xl border border-gold/20 bg-surface/70 text-sm uppercase tracking-widest text-gold shadow-royal transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-gold/40"
                                 >
                                     Photo {item}
                                 </div>
@@ -62,7 +62,7 @@ export default function Photos() {
                         ))}
                     </div>
                     <Reveal animation="fadeIn">
-                        <div className="mt-12 rounded-2xl border border-gold/20 bg-white/70 p-8 shadow-royal sm:p-10">
+                        <div className="mt-12 rounded-2xl border border-gold/20 bg-surface/70 p-8 shadow-royal sm:p-10">
                             <p className=" leading-relaxed text-teak/80">{weddingData.photos.phaseTwo}</p>
                         </div>
                     </Reveal>
@@ -71,7 +71,7 @@ export default function Photos() {
 
             {photoState.status === "ready" && (
                 <Reveal animation="fadeIn">
-                    <div className="mt-12 rounded-2xl border border-gold/20 bg-white/70 p-8 shadow-royal sm:p-10">
+                    <div className="mt-12 rounded-2xl border border-gold/20 bg-surface/70 p-8 shadow-royal sm:p-10">
                         <p className="text-sm uppercase tracking-[0.35em] text-gold">Choose a side to view albums</p>
                         <p className="mt-4 leading-relaxed text-teak/80">
                             Photos are now live. Select Bride or Groom to view each collection.
