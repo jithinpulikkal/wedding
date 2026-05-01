@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar.jsx";
 import Footer from "./Footer.jsx";
+import FallingFlowers from "./FallingFlowers.jsx";
 
 export default function Layout() {
     const location = useLocation();
@@ -46,17 +47,21 @@ export default function Layout() {
 
     return (
         <div className="flex min-h-screen flex-col bg-temple-pattern text-teak">
+            <FallingFlowers />
+
             <Navbar
                 activePath={location.pathname}
                 isDarkMode={isDarkMode}
                 onToggleTheme={() => setIsDarkMode((current) => !current)}
             />
 
-            <main className="flex-1 overflow-x-clip pt-20 sm:pt-24">
+            <main className="relative z-20 flex-1 overflow-x-clip pt-20 sm:pt-24">
                 <Outlet />
             </main>
 
-            <Footer />
+            <div className="relative z-20">
+                <Footer />
+            </div>
         </div>
     );
 }
