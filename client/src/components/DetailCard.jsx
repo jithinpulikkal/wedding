@@ -20,7 +20,7 @@ export function DetailCard({ eyebrow, title, subtitle, lines, mapLink, variant =
         <Reveal animation="scaleIn">
             <div
                 className={`rounded-2xl border border-gold/20 ${getCardClass(
-                    variant
+                    variant,
                 )} p-6 shadow-royal sm:p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl`}
             >
                 {isNonEmpty(eyebrow) ? <p className="text-sm uppercase tracking-[0.3em] text-gold">{eyebrow}</p> : null}
@@ -38,7 +38,9 @@ export function DetailCard({ eyebrow, title, subtitle, lines, mapLink, variant =
                             </h3>
                         ) : null}
 
-                        {isNonEmpty(subtitle) ? <h2 className="font-serif text-maroon font-bold mt-1">{subtitle}</h2> : null}
+                        {isNonEmpty(subtitle) ? (
+                            <h2 className="font-serif text-maroon font-bold mt-1">{subtitle}</h2>
+                        ) : null}
                     </>
                 ) : null}
 
@@ -103,13 +105,6 @@ export function buildDetailCards(data) {
             title: groom.name,
             subtitle: groom.parents,
             lines: normalizeLines([groom.address, groom.address1, groom.hometown]),
-        },
-        {
-            key: "ceremony",
-            // title: ceremony.subtitle,
-            subtitle: ceremony.intro,
-            lines: normalizeLines([...(ceremony.details || []), ceremony.dressCode]),
-            variant: "parchment",
         },
     ].filter((card) => card.title || (card.lines && card.lines.length));
 }

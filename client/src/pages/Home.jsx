@@ -223,7 +223,7 @@ export default function Home() {
             </section>
 
             <section id="details" className="mx-auto max-w-6xl px-5">
-                <SectionHeader eyebrow="Wedding Details" title="A Royal Kerala Celebration" description={ceremony.intro} />
+                <SectionHeader eyebrow="Wedding Details" title="A Traditional Kerala Celebration" description={ceremony.intro} />
 
                 <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-5">
                     <div className="lg:col-span-3">
@@ -267,7 +267,7 @@ export default function Home() {
                 <SectionHeader
                     eyebrow="Location"
                     title="Venue & Directions"
-                    description="Temple-inspired venue with traditional lamps, gold accents, and floral arrangements."
+                    description="Elegant auditorium venue with spacious seating, ample parking, and a well-designed stage for the celebration."
                 />
                 <div className="grid gap-6 md:grid-cols-2">
                     {venueCards.map((card) => (

@@ -8,7 +8,7 @@
 
     nav: {
         items: [
-            { label: "Home", hash: "#top" },
+            // { label: "Home", hash: "#top" },
             { label: "Wedding Details", hash: "#details" },
             { label: "Location", hash: "#location" },
         ],
@@ -17,7 +17,7 @@
 
     couple: {
         bride: {
-            name: "Raveena Venugopal",
+            name: "Dr. Raveena Venugopal",
             parents: "D/o Smt. Rajasree & Sri. Venugopal",
             address: "Cherukudilil House",
             address1: "Chilavil, Ponmundam P O",
