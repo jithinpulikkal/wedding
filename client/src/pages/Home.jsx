@@ -1,4 +1,5 @@
 ﻿import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import SectionHeader from "../components/SectionHeader.jsx";
 import IllustrationCard from "../components/IllustrationCard.jsx";
 import DetailCard, { buildDetailCards, buildWelcomeCards, buildVenueCards } from "../components/DetailCard.jsx";
@@ -9,6 +10,7 @@ import Reveal from "../components/Reveal.jsx";
 
 const WEDDING_TARGET = new Date("2026-09-12T10:45:00+05:30").getTime();
 const WEDDING_END = new Date("2026-09-12T12:30:00+05:30").getTime();
+const HERO_SECTION_READY_DELAY = 7200;
 
 function getCountdownParts(targetTime) {
     const difference = targetTime - Date.now();
@@ -46,14 +48,13 @@ function escapeIcsText(value) {
 }
 
 export default function Home() {
+    const location = useLocation();
     const { brand, couple, events, invitation, ceremony, venues } = weddingData;
     const detailCards = buildDetailCards(weddingData);
     const welcomeCards = buildWelcomeCards(weddingData);
     const venueCards = buildVenueCards(weddingData);
 
-    const [heroReady, setHeroReady] = useState(false);
     const [countdown, setCountdown] = useState(() => getCountdownParts(WEDDING_TARGET));
-    const handleHeroReady = () => setHeroReady(true);
 
     useEffect(() => {
         const intervalId = window.setInterval(() => {
@@ -62,6 +63,29 @@ export default function Home() {
 
         return () => window.clearInterval(intervalId);
     }, []);
+
+    useEffect(() => {
+        if (location.hash) {
+            return undefined;
+        }
+
+        const root = document.documentElement;
+        const body = document.body;
+        const unlockScroll = () => {
+            root.classList.remove("scroll-locked");
+            body.classList.remove("scroll-locked");
+        };
+
+        root.classList.add("scroll-locked");
+        body.classList.add("scroll-locked");
+
+        const readyTimer = window.setTimeout(unlockScroll, HERO_SECTION_READY_DELAY);
+
+        return () => {
+            window.clearTimeout(readyTimer);
+            unlockScroll();
+        };
+    }, [location.hash]);
 
     const weddingVenue = venues[0];
     const eventTitle = `${couple.bride.name} & ${couple.groom.name} Wedding Ceremony`;
@@ -109,7 +133,7 @@ export default function Home() {
             <section className="mx-auto max-w-6xl px-4 sm:px-5 py-auto">
                 <div className="mx-auto max-w-4xl min-w-0 space-y-6 text-center sm:space-y-4">
                     <Reveal animation="fadeInSlow" delay={0}>
-                        <p className="break-words md:mt-10 mt-36  text-2xl font-bold uppercase tracking-[0.18em] text-gold sm:text-4xl sm:tracking-[0.35em]">
+                        <p className="break-words mt-24  text-2xl font-bold uppercase tracking-[0.18em] text-gold sm:text-4xl sm:tracking-[0.35em]">
                             {invitation.title}
                         </p>
                     </Reveal>

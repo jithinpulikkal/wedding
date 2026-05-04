@@ -198,3 +198,12 @@ img {
     transform: translate3d(0, 0, 0);
   }
 }
+html.scroll-locked,
+body.scroll-locked {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body.scroll-locked {
+  touch-action: none;
+}
